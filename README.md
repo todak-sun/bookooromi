@@ -6,8 +6,9 @@
 - 테스트 코드 작성
 
 ## Usage
-
-- java
-- spring boot
-- jpa
-- junit
+- Gradle
+- Java 11
+- Spring boot 2.4.3
+- Spring security
+- JPA, queryDSL
+- Junit5
