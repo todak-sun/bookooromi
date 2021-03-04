@@ -4,9 +4,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@ActiveProfiles("test")
+@Transactional
 class AccountTests {
 
     PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
@@ -20,7 +24,7 @@ class AccountTests {
 
     @Test
     @DisplayName("password를 인코딩하는지 검사")
-    public void password_encode(){
+    public void password_encode() {
         //given
         String password = "password";
 
@@ -34,7 +38,6 @@ class AccountTests {
 
         //then
         assertNotEquals(password, account.getPassword());
-
 
 
     }

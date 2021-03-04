@@ -55,12 +55,13 @@ public class TokenProvider implements InitializingBean {
                 .compact();
     }
 
+    public String getUsername(String token) {
+        Claims claims = getClaims(token);
+        return claims.getSubject();
+    }
+
     public Authentication getAuthentication(String token) {
-        Claims claims = Jwts.parserBuilder()
-                .setSigningKey(key)
-                .build()
-                .parseClaimsJws(token)
-                .getBody();
+        Claims claims = getClaims(token);
 
         List<SimpleGrantedAuthority> authorities = Arrays.stream(claims.get(AUTHORITIES_KEY).toString().split(","))
                 .map(SimpleGrantedAuthority::new)
@@ -84,5 +85,13 @@ public class TokenProvider implements InitializingBean {
             log.error("잘못된 토큰");
         }
         return false;
+    }
+
+    private Claims getClaims(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
     }
 }
