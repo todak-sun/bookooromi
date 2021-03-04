@@ -31,9 +31,9 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
             Authentication authentication = tokenProvider.getAuthentication(jwt);
             SecurityContextHolder.getContext().setAuthentication(authentication);
-            log.debug("저장 성공 : {}, requestURI: {}", authentication.getPrincipal(), requestURI);
+            log.info("저장 성공 : {}, requestURI: {}", authentication.getPrincipal(), requestURI);
         } else {
-            log.debug("유효한 토큰 없음, requestURI : {}", requestURI);
+            log.info("유효한 토큰 없음, requestURI : {}", requestURI);
         }
 
         filterChain.doFilter(request, response);
@@ -41,6 +41,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
     private String resolveToken(HttpServletRequest request) {
         String bearerToken = request.getHeader(AUTHORIZATION_HEADER);
+        System.out.println("bearerToken : " + bearerToken);
         if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
             return bearerToken.substring(7);
         }
