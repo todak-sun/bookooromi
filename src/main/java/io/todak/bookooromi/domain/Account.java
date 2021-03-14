@@ -1,6 +1,5 @@
-package io.todak.bookooromi.account;
+package io.todak.bookooromi.domain;
 
-import io.todak.bookooromi.account.authority.Authority;
 import io.todak.bookooromi.common.entities.BaseDateTimeEntity;
 import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;

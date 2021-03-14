@@ -10,7 +10,7 @@ import org.springframework.test.web.servlet.ResultActions;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-class AccountApiControllerTest extends ApiTest {
+class AccountControllerTest extends ApiTest {
 
     @Test
     @DisplayName("회원가입을 진행하는 api")

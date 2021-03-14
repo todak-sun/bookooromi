@@ -1,4 +1,4 @@
-package io.todak.bookooromi.account;
+package io.todak.bookooromi.domain;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

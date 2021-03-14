@@ -1,5 +1,6 @@
 package io.todak.bookooromi.account;
 
+import io.todak.bookooromi.domain.Account;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

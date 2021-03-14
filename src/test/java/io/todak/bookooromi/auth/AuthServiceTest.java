@@ -1,6 +1,6 @@
 package io.todak.bookooromi.auth;
 
-import io.todak.bookooromi.account.Account;
+import io.todak.bookooromi.domain.Account;
 import io.todak.bookooromi.account.AccountService;
 import io.todak.bookooromi.auth.dto.TokenResponse;
 import io.todak.bookooromi.security.jwt.TokenProvider;

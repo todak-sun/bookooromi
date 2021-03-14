@@ -3,6 +3,7 @@ package io.todak.bookooromi.account;
 import io.todak.bookooromi.account.dto.SignUpRequest;
 import io.todak.bookooromi.account.dto.SignUpResponse;
 import io.todak.bookooromi.common.entities.network.Response;
+import io.todak.bookooromi.domain.Account;
 import io.todak.bookooromi.security.SignInUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,7 +16,7 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 @RequestMapping("/api")
 @RestController
-public class AccountApiController {
+public class AccountController {
 
     private final AccountService accountService;
 

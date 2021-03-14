@@ -2,6 +2,8 @@ package io.todak.bookooromi.account;
 
 import io.todak.bookooromi.account.dto.SignUpRequest;
 import io.todak.bookooromi.account.dto.SignUpResponse;
+import io.todak.bookooromi.domain.Account;
+import io.todak.bookooromi.domain.AccountRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +24,7 @@ class AccountMapperTest {
 
     @Test
     @DisplayName("SignUpRequest -> Account")
-    public void toEntityFromSignUpRequest() {
+    public void to_entity_from_sign_up_request() {
         //given
         String username = "username";
         String password = "password";

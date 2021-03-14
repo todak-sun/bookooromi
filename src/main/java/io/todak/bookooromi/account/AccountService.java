@@ -1,5 +1,7 @@
 package io.todak.bookooromi.account;
 
+import io.todak.bookooromi.domain.Account;
+import io.todak.bookooromi.domain.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

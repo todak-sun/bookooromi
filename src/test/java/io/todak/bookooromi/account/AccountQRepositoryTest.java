@@ -1,9 +1,10 @@
 package io.todak.bookooromi.account;
 
+import io.todak.bookooromi.domain.Account;
+import io.todak.bookooromi.domain.AccountRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.ActiveProfiles;
@@ -26,6 +27,9 @@ class AccountQRepositoryTest {
     AccountQRepository accountQRepository;
 
     @Autowired
+    AccountRepository accountRepository;
+
+    @Autowired
     PasswordEncoder passwordEncoder;
 
     @Autowired
@@ -40,6 +44,8 @@ class AccountQRepositoryTest {
     @Test
     @DisplayName("저장한 엔티티가, QueryDSL을 통해 잘 조회가 되는지 테스트")
     public void find_by_id() {
+        accountRepository.deleteAll();
+
         //given
         String username = "todaksun@gmail.com";
         String password = "password";
@@ -60,6 +66,7 @@ class AccountQRepositoryTest {
     }
 
     private Account saveAccount(String username, String password) {
+
         return accountService.signUp(Account.builder()
                 .username(username)
                 .password(password)
@@ -69,6 +76,10 @@ class AccountQRepositoryTest {
     @Test
     @Transactional
     public void update_test() {
+        accountRepository.deleteAll();
+        em.flush();
+        em.clear();
+
         //given
         String username = "todaksun@gmail.com";
         String password = "password";
@@ -77,13 +88,9 @@ class AccountQRepositoryTest {
         String hashedPasswordBefore = savedAccount.getPassword();
 
         Long savedId = savedAccount.getId();
-        em.flush();
-        em.clear();
 
         Account beforeUpdate = accountQRepository.findById(savedId).get();
         beforeUpdate.changePassword(passwordEncoder, "String");
-        em.flush();
-        em.clear();
 
         Account afterUpdate = accountQRepository.findById(savedId).get();
         String hashedPasswordAfter = afterUpdate.getPassword();

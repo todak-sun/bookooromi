@@ -1,9 +1,10 @@
 package io.todak.bookooromi.auth;
 
-import io.todak.bookooromi.account.Account;
+import io.todak.bookooromi.domain.Account;
 import io.todak.bookooromi.account.AccountService;
 import io.todak.bookooromi.auth.dto.LoginRequest;
 import io.todak.bookooromi.common.ApiTest;
+import io.todak.bookooromi.domain.AccountRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,14 +14,19 @@ import org.springframework.test.web.servlet.ResultActions;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-class AuthApiControllerTest extends ApiTest {
+class AuthControllerTest extends ApiTest {
 
     @Autowired
     AccountService accountService;
 
+    @Autowired
+    AccountRepository accountRepository;
+
     @Test
     @DisplayName("성공적으로 로그인하는 테스트")
     public void loginTest() throws Exception {
+
+        accountRepository.deleteAll();
 
         //given
         String username = "todaksun@gmail.com";

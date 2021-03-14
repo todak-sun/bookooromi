@@ -1,7 +1,7 @@
 package io.todak.bookooromi.security;
 
-import io.todak.bookooromi.account.Account;
-import io.todak.bookooromi.account.AccountRepository;
+import io.todak.bookooromi.domain.Account;
+import io.todak.bookooromi.domain.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;

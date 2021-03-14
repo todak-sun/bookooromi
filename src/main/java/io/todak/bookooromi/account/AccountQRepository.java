@@ -1,6 +1,8 @@
 package io.todak.bookooromi.account;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import io.todak.bookooromi.domain.Account;
+import io.todak.bookooromi.domain.QAccount;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
